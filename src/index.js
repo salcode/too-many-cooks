@@ -110,13 +110,6 @@ registerPlugin(
               onClick={() => setGutenbergOvenTemp(modifiedValue - 1)}
             >-</Button>
           </Value>
-          <hr />
-          <TextControl
-            help="Updates Gutenberg in Real Time"
-            label="Modify Gutenberg Value"
-            onChange={setGutenbergOvenTemp}
-            value={modifiedValue}
-          />
         </PluginDocumentSettingPanel>
       );
     },
