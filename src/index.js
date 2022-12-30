@@ -9,6 +9,7 @@ import {
 import { PluginDocumentSettingPanel } from '@wordpress/edit-post';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import WarningMessage from './components/WarningMessage';
 import Value from './components/Value';
 
 const setGutenbergOvenTemp = (newOvenTemp) => {
@@ -110,6 +111,11 @@ registerPlugin(
               onClick={() => setGutenbergOvenTemp(modifiedValue - 1)}
             >-</Button>
           </Value>
+          <WarningMessage
+            dbValue={dbValue}
+            dbValueOnLoad={dbValueOnLoad}
+            modifiedValue={modifiedValue}
+          />
         </PluginDocumentSettingPanel>
       );
     },
