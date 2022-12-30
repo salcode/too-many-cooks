@@ -61,5 +61,11 @@ add_action( 'init', __NAMESPACE__ . '\register_assets' );
  */
 function enqueue_editor_assets() {
 	wp_enqueue_script( 'salcode-too-many-cooks' );
+	wp_enqueue_style(
+		'salcode-too-many-cooks',
+		plugins_url( 'css/stylesheet.css', __FILE__ ),
+		[],
+		'1.0.0'
+	);
 }
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_editor_assets' );
