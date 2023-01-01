@@ -6,6 +6,12 @@ export default function reducer(state, action) {
         databaseValue: action.value,
       };
     }
+    case 'setUpdatingDatabase': {
+      return {
+        ...state,
+        isUpdatingDatabase: action.value,
+      };
+    }
     default:
       return state;
   }
