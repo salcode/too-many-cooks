@@ -12,6 +12,8 @@ import { __ } from '@wordpress/i18n';
 import WarningMessage from './components/WarningMessage';
 import Value from './components/Value';
 
+import TooManyCooks from './components/TooManyCooks';
+
 const setGutenbergOvenTemp = (newOvenTemp) => {
   dispatch('core/editor')
     .editPost(
@@ -71,10 +73,25 @@ registerPlugin(
         }
       );
 
+      const currentValue = useSelect(
+        (select) => select('core/editor')
+          .getCurrentPostAttribute('meta')
+          .salcode_is_oven_on
+      );
+      const editedValue = useSelect(
+        (select) => select('core/editor')
+          .getEditedPostAttribute('meta')
+          .salcode_is_oven_on
+      );
+
       return (
         <PluginDocumentSettingPanel
           title={__('Oven Temp', 'too-many-cooks')}
         >
+          <TooManyCooks
+            currentValue={currentValue}
+            editedValue={editedValue}
+          />
           <Value
             help="The value currently in the database"
             isUpdating={isUpdating}
