@@ -73,13 +73,24 @@ registerPlugin(
         }
       );
 
+      const currentValue = useSelect(
+        (select) => select('core/editor')
+          .getCurrentPostAttribute('meta')
+          .salcode_is_oven_on
+      );
+      const editedValue = useSelect(
+        (select) => select('core/editor')
+          .getEditedPostAttribute('meta')
+          .salcode_is_oven_on
+      );
+
       return (
         <PluginDocumentSettingPanel
           title={__('Oven Temp', 'too-many-cooks')}
         >
           <TooManyCooks
-            currentValue={select('core/editor').getCurrentPostAttribute('meta').salcode_oven_temp}
-            editedValue={select('core/editor').getEditedPostAttribute('meta').salcode_oven_temp}
+            currentValue={currentValue}
+            editedValue={editedValue}
           />
           <Value
             help="The value currently in the database"
