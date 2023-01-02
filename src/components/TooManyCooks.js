@@ -51,9 +51,6 @@ export default function TooManyCooks({
   );
   return <>
     <h2>Too Many Cooks</h2>
-    {state.databaseValue ? 'true' : 'false'}/
-    {currentValue ? 'true' : 'false'}/
-    {editedValue ? 'true' : 'false'}
     <ul>
       <li key="database">
         <ShowBool value={state.databaseValue} />:
