@@ -5,6 +5,7 @@ import {
 } from '@wordpress/data';
 import { useReducer } from '@wordpress/element';
 
+import ShowBool from './ShowBool';
 import reducer from '../reducer';
 
 export default function TooManyCooks({
@@ -24,7 +25,7 @@ export default function TooManyCooks({
     {editedValue ? 'true' : 'false'}
     <ul>
       <li key="database">
-        { state.databaseValue ? 'true' : 'false' }: 
+        <ShowBool value={state.databaseValue} />:
         Database Value
         {state.isUpdatingDatabase ? 'updating...' : ''}
         <Button className="is-primary" onClick={
@@ -56,11 +57,11 @@ export default function TooManyCooks({
         }>Toggle</Button>
       </li>
       <li key="currentValue">
-        {currentValue ? 'true' : 'false'}: 
+        <ShowBool value={currentValue} />:
         Current (Gutenberg)
       </li>
       <li key="editedValue">
-        {editedValue ? 'true' : 'false'}: 
+        <ShowBool value={editedValue} />:
         Edited (Gutenberg)
         <Button className="is-primary" onClick={() =>
            wpDispatch('core/editor').editPost({
