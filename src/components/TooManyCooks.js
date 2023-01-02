@@ -1,9 +1,13 @@
+import apiFetch from '@wordpress/api-fetch';
 import { Button } from '@wordpress/components';
 import {
   dispatch as wpDispatch,
   select
 } from '@wordpress/data';
-import { useReducer } from '@wordpress/element';
+import {
+  useEffect,
+  useReducer
+} from '@wordpress/element';
 
 import ShowBool from './ShowBool';
 import reducer from '../reducer';
@@ -15,8 +19,35 @@ export default function TooManyCooks({
   const [state, dispatch] = useReducer(
     reducer,
     {
-      databaseValue: false,
+      databaseValue: currentValue,
+      setUpdatingDatabase: true,
     },
+  );
+  useEffect(
+    () => {
+      (async () => {
+        // Starting update.
+        dispatch({
+          type: 'setUpdatingDatabase',
+          value: true,
+        });
+
+        // Fetch value from database.
+        const newDatabaseValue = (await apiFetch({
+          path: `/wp/v2/posts/${select('core/editor').getCurrentPostId()}`,
+        }))?.meta?.salcode_is_oven_on;
+        dispatch({
+          type: 'setDatabaseValue',
+          value: newDatabaseValue,
+        });
+
+        dispatch({
+          type: 'setUpdatingDatabase',
+          value: false,
+        });
+      })();
+    },
+    [ currentValue ]
   );
   return <>
     <h2>Too Many Cooks</h2>
