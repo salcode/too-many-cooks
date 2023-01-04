@@ -1,6 +1,5 @@
 import apiFetch from '@wordpress/api-fetch';
 import { registerPlugin } from '@wordpress/plugins';
-import { Button, TextControl } from '@wordpress/components';
 import {
   dispatch,
   select,
@@ -92,42 +91,6 @@ registerPlugin(
             currentValue={currentValue}
             editedValue={editedValue}
           />
-          <Value
-            help="The value currently in the database"
-            isUpdating={isUpdating}
-            label="Database Value"
-            value={dbValue}
-          >
-            <Button
-              onClick={() => setDatabaseOvenTemp(dbValue + 1)}
-            >+</Button>
-            /
-            <Button
-              onClick={() => setDatabaseOvenTemp(dbValue - 1)}
-            >-</Button>
-            /
-            <Button
-              onClick={() => fetchDatabaseOvenTemp()}
-            >Fetch</Button>
-          </Value>
-          <Value
-            help="Gutenberg saved value based on last communication with the database"
-            label="Saved Value (Gutenberg)"
-            value={dbValueOnLoad}
-          />
-          <Value
-            help="Gutenberg editable in memory value"
-            label="Edited Value (Gutenberg)"
-            value={modifiedValue}
-          >
-            <Button
-              onClick={() => setGutenbergOvenTemp(modifiedValue + 1)}
-            >+</Button>
-            /
-            <Button
-              onClick={() => setGutenbergOvenTemp(modifiedValue - 1)}
-            >-</Button>
-          </Value>
           <WarningMessage
             dbValue={dbValue}
             dbValueOnLoad={dbValueOnLoad}
