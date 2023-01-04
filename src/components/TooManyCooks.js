@@ -55,7 +55,7 @@ export default function TooManyCooks({
         <ShowBool value={state.databaseValue} />:
         Database Value
         {state.isUpdatingDatabase ? 'updating...' : ''}
-        <Button className="is-primary" onClick={
+        <Button className="is-primary too-many-cooks__toggle" onClick={
           async () => {
             // Starting update.
             dispatch({
@@ -90,7 +90,7 @@ export default function TooManyCooks({
       <li key="editedValue">
         <ShowBool value={editedValue} />:
         Edited (Gutenberg)
-        <Button className="is-primary" onClick={() =>
+        <Button className="is-primary too-many-cooks__toggle" onClick={() =>
            wpDispatch('core/editor').editPost({
              meta: {salcode_is_oven_on: ! editedValue},
           })
