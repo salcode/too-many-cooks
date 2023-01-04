@@ -50,7 +50,6 @@ export default function TooManyCooks({
     [ currentValue ]
   );
   return <>
-    <h2>Too Many Cooks</h2>
     <ul>
       <li key="database">
         <ShowBool value={state.databaseValue} />:
