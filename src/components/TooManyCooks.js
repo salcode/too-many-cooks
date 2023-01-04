@@ -98,5 +98,11 @@ export default function TooManyCooks({
         }>Toggle</Button>
       </li>
     </ul>
+    <Button
+      className="is-primary"
+      onClick={() => wp.data.dispatch('core/editor').savePost()}
+    >
+      Save Post
+    </Button>
   </>;
 }
