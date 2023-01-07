@@ -10,6 +10,7 @@ import {
 } from '@wordpress/element';
 
 import ShowBool from './ShowBool';
+import WarningMessage from './WarningMessage';
 import reducer from '../reducer';
 
 export default function TooManyCooks({
@@ -103,5 +104,10 @@ export default function TooManyCooks({
     >
       Save Post
     </Button>
+    <WarningMessage
+      currentValue={currentValue}
+      databaseValue={state.databaseValue}
+      editedValue={editedValue}
+    />
   </>;
 }
