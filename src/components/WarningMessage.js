@@ -8,7 +8,7 @@ export default function WarningMessage({
   }
 
   if (databaseValue !== currentValue) {
-    return <p className="components-notice is-success">{`Gutenberg has not modified the value. Saving will set all values to the database value (${databaseValue})`}</p>;
+    return <p className="components-notice is-success">{`Gutenberg has not modified the value. Saving will set all values to the Database value (${databaseValue})`}</p>;
   }
 
   return null;
