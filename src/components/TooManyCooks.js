@@ -44,6 +44,11 @@ export default function TooManyCooks({
         });
 
         dispatch({
+          type: 'setIsDirty',
+          value: false,
+        });
+
+        dispatch({
           type: 'setUpdatingDatabase',
           value: false,
         });
@@ -92,19 +97,26 @@ export default function TooManyCooks({
       <li key="editedValue">
         <ShowBool value={editedValue} />:
         Edited (Gutenberg)
-        <Button className="is-primary too-many-cooks__toggle" onClick={() =>
-           wpDispatch('core/editor').editPost({
-             meta: {salcode_is_oven_on: ! editedValue},
-          })
-        }>Toggle</Button>
+        <Button className="is-primary too-many-cooks__toggle" onClick={() => {
+          wpDispatch('core/editor').editPost({
+            meta: {salcode_is_oven_on: ! editedValue},
+          });
+          dispatch({
+            type: 'setIsDirty',
+            value: true,
+          });
+        }}>Toggle</Button>
       </li>
     </ul>
-    <Button
-      className="is-primary"
-      onClick={() => wp.data.dispatch('core/editor').savePost()}
-    >
-      Save Post
-    </Button>
+    <p>
+      <Button
+        className="is-primary"
+        onClick={() => wp.data.dispatch('core/editor').savePost()}
+      >
+        Save Post
+      </Button>
+    </p>
+
     <WarningMessage
       currentValue={currentValue}
       databaseValue={state.databaseValue}
