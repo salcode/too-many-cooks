@@ -121,6 +121,7 @@ export default function TooManyCooks({
       currentValue={currentValue}
       databaseValue={state.databaseValue}
       editedValue={editedValue}
+      isDirty={state.isDirty}
     />
   </>;
 }
