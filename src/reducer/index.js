@@ -6,6 +6,12 @@ export default function reducer(state, action) {
         databaseValue: action.value,
       };
     }
+    case 'setIsDirty': {
+      return {
+        ...state,
+        isDirty: action.value,
+      };
+    }
     case 'setUpdatingDatabase': {
       return {
         ...state,

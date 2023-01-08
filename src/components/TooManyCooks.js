@@ -21,6 +21,7 @@ export default function TooManyCooks({
     reducer,
     {
       databaseValue: currentValue,
+      isDirty: false,
       setUpdatingDatabase: true,
     },
   );
