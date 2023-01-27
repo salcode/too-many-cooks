@@ -100,7 +100,7 @@ export default function TooManyCooks({
         Edited (Gutenberg)
         <Button className="is-primary too-many-cooks__toggle" onClick={() => {
           wpDispatch('core/editor').editPost({
-            meta: {salcode_is_oven_on: ! editedValue},
+            meta: {salcode_oven_temp: editedValue + 10},
           });
           dispatch({
             type: 'setIsDirty',
