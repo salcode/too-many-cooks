@@ -110,6 +110,10 @@ export default function TooManyCooks({
         <ShowTemp value={editedValue} />:
         Edited (Gutenberg)
         <Button className="is-primary too-many-cooks__toggle too-many-cooks__incement_decrement" onClick={() => {
+          setGutenbergEditedValue(editedValue-10);
+        }}>-</Button>
+        /
+        <Button className="is-primary too-many-cooks__toggle too-many-cooks__incement_decrement" onClick={() => {
           setGutenbergEditedValue(editedValue+10);
         }}>+</Button>
       </li>
