@@ -98,9 +98,8 @@ export default function TooManyCooks({
   return <>
     <ul>
       <li key="database">
-        <ShowTemp value={state.databaseValue} />:
-        Database Value
-        {state.isUpdatingDatabase ? 'updating...' : ''}
+        <ShowTemp value={state.databaseValue} />:{' '}
+        {state.isUpdatingDatabase ? 'updating...' : 'Database Value'}
         <Button className="is-primary too-many-cooks__toggle" onClick={
           () => {
             setDatabaseValue(state.databaseValue-10);
