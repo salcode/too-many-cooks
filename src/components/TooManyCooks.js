@@ -37,6 +37,33 @@ export default function TooManyCooks({
     });
   };
 
+  async function setDatabaseValue(newValue) {
+    // Starting update.
+    dispatch({
+      type: 'setUpdatingDatabase',
+      value: true,
+    });
+    const newDatabaseValue = (await wp.apiFetch({
+      data: {
+        meta: { salcode_oven_temp: newValue },
+      },
+      method: 'POST',
+      path: `/wp/v2/posts/${select('core/editor').getCurrentPostId()}`,
+    }))?.meta?.salcode_oven_temp;
+
+    dispatch({
+      type: 'setDatabaseValue',
+      value: newDatabaseValue,
+    });
+
+    // Done updated.
+    dispatch({
+      type: 'setUpdatingDatabase',
+      value: false,
+    });
+
+  }
+
   useEffect(
     () => {
       (async () => {
@@ -75,30 +102,8 @@ export default function TooManyCooks({
         Database Value
         {state.isUpdatingDatabase ? 'updating...' : ''}
         <Button className="is-primary too-many-cooks__toggle" onClick={
-          async () => {
-            // Starting update.
-            dispatch({
-               type: 'setUpdatingDatabase',
-               value: true,
-            });
-            const newDatabaseValue = (await wp.apiFetch({
-              data: {
-                meta: { salcode_oven_temp: state.databaseValue + 10 },
-              },
-              method: 'POST',
-              path: `/wp/v2/posts/${select('core/editor').getCurrentPostId()}`,
-            }))?.meta?.salcode_oven_temp;
-
-            dispatch({
-              type: 'setDatabaseValue',
-              value: newDatabaseValue,
-            });
-
-            // Done updated.
-            dispatch({
-               type: 'setUpdatingDatabase',
-               value: false,
-            });
+          () => {
+            setDatabaseValue(state.databaseValue+10);
           }
         }>+</Button>
       </li>
