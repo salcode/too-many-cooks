@@ -28,7 +28,7 @@ registerPlugin(
 
       return (
         <PluginDocumentSettingPanel
-          title={__('Oven is On', 'too-many-cooks')}
+          title={__('Oven Temp', 'too-many-cooks')}
         >
           <TooManyCooks
             currentValue={currentValue}
