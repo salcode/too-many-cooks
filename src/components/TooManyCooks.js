@@ -10,6 +10,7 @@ import {
 } from '@wordpress/element';
 
 import ShowBool from './ShowBool';
+import ShowTemp from './ShowTemp';
 import WarningMessage from './WarningMessage';
 import reducer from '../reducer';
 
@@ -59,7 +60,7 @@ export default function TooManyCooks({
   return <>
     <ul>
       <li key="database">
-        <ShowBool value={state.databaseValue} />:
+        <ShowTemp value={state.databaseValue} />:
         Database Value
         {state.isUpdatingDatabase ? 'updating...' : ''}
         <Button className="is-primary too-many-cooks__toggle" onClick={
@@ -91,11 +92,11 @@ export default function TooManyCooks({
         }>Toggle</Button>
       </li>
       <li key="currentValue">
-        <ShowBool value={currentValue} />:
+        <ShowTemp value={currentValue} />:
         Current (Gutenberg)
       </li>
       <li key="editedValue">
-        <ShowBool value={editedValue} />:
+        <ShowTemp value={editedValue} />:
         Edited (Gutenberg)
         <Button className="is-primary too-many-cooks__toggle" onClick={() => {
           wpDispatch('core/editor').editPost({
