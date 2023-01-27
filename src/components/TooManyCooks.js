@@ -37,7 +37,7 @@ export default function TooManyCooks({
         // Fetch value from database.
         const newDatabaseValue = (await apiFetch({
           path: `/wp/v2/posts/${select('core/editor').getCurrentPostId()}`,
-        }))?.meta?.salcode_is_oven_on;
+        }))?.meta?.salcode_oven_temp;
         dispatch({
           type: 'setDatabaseValue',
           value: newDatabaseValue,
