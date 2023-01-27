@@ -33,22 +33,7 @@ function salcode_oven_temp_register_post_meta() {
 	] );
 }
 
-/**
- * Expose salcode_is_oven_on post meta to REST API (and thereby Gutenberg).
- */
-add_action( 'init', __NAMESPACE__ . '\salcode_is_oven_on_register_post_meta' );
-function salcode_is_oven_on_register_post_meta() {
-	$post_type = ''; // All post types, see register_post_meta() documentation.
-	register_post_meta( $post_type, 'salcode_is_oven_on', [
-		'auth_callback'     => function() {
-			return current_user_can( 'edit_posts' );
-		},
-		'sanitize_callback' => 'sanitize_text_field',
-		'show_in_rest'      => true,
-		'single'            => true,
-		'type'              => 'boolean',
-	] );
-}
+
 /**
  * Make WordPress aware of our JavaScript file and tell
  * WordPress to refer to this JavaScript file by the handle
