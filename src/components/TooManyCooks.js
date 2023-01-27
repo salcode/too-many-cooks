@@ -26,6 +26,17 @@ export default function TooManyCooks({
       setUpdatingDatabase: true,
     },
   );
+
+  function setGutenbergEditedValue(newValue) {
+    wpDispatch('core/editor').editPost({
+      meta: {salcode_oven_temp: newValue},
+    });
+    dispatch({
+      type: 'setIsDirty',
+      value: true,
+    });
+  };
+
   useEffect(
     () => {
       (async () => {
@@ -98,14 +109,8 @@ export default function TooManyCooks({
       <li key="editedValue">
         <ShowTemp value={editedValue} />:
         Edited (Gutenberg)
-        <Button className="is-primary too-many-cooks__toggle" onClick={() => {
-          wpDispatch('core/editor').editPost({
-            meta: {salcode_oven_temp: editedValue + 10},
-          });
-          dispatch({
-            type: 'setIsDirty',
-            value: true,
-          });
+        <Button className="is-primary too-many-cooks__toggle too-many-cooks__incement_decrement" onClick={() => {
+          setGutenbergEditedValue(editedValue+10);
         }}>+</Button>
       </li>
     </ul>
