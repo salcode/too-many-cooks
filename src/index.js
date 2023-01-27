@@ -18,12 +18,12 @@ registerPlugin(
       const currentValue = useSelect(
         (select) => select('core/editor')
           .getCurrentPostAttribute('meta')
-          .salcode_is_oven_on
+          .salcode_oven_temp
       );
       const editedValue = useSelect(
         (select) => select('core/editor')
           .getEditedPostAttribute('meta')
-          .salcode_is_oven_on
+          .salcode_oven_temp
       );
 
       return (
