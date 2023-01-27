@@ -103,6 +103,12 @@ export default function TooManyCooks({
         {state.isUpdatingDatabase ? 'updating...' : ''}
         <Button className="is-primary too-many-cooks__toggle" onClick={
           () => {
+            setDatabaseValue(state.databaseValue-10);
+          }
+        }>-</Button>
+        /
+        <Button className="is-primary too-many-cooks__toggle" onClick={
+          () => {
             setDatabaseValue(state.databaseValue+10);
           }
         }>+</Button>
