@@ -89,7 +89,7 @@ export default function TooManyCooks({
                value: false,
             });
           }
-        }>Toggle</Button>
+        }>+</Button>
       </li>
       <li key="currentValue">
         <ShowTemp value={currentValue} />:
@@ -106,7 +106,7 @@ export default function TooManyCooks({
             type: 'setIsDirty',
             value: true,
           });
-        }}>Toggle</Button>
+        }}>+</Button>
       </li>
     </ul>
     <p>
