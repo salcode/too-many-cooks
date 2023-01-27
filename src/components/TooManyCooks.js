@@ -72,11 +72,11 @@ export default function TooManyCooks({
             });
             const newDatabaseValue = (await wp.apiFetch({
               data: {
-                meta: { salcode_is_oven_on: ! state.databaseValue },
+                meta: { salcode_oven_temp: state.databaseValue + 10 },
               },
               method: 'POST',
               path: `/wp/v2/posts/${select('core/editor').getCurrentPostId()}`,
-            }))?.meta?.salcode_is_oven_on;
+            }))?.meta?.salcode_oven_temp;
 
             dispatch({
               type: 'setDatabaseValue',
